@@ -30,8 +30,9 @@ function HeaderTabs() {
   ];
 
   return (
-    <div className="flex w-full flex-grow mt-6 space-x-6 text-gray-400 max-w-[820px] justify-between">
-      <div className="ml-[170px] flex space-x-6">
+    <div className="flex w-full flex-grow mt-6 space-x-6 text-gray-400 max-w-[820px] 1.5lg:max-w-[645px] justify-between 1.5lg:ml-5 
+    1.5xl:ml-[calc((100vw-1065px)/2-180px)]">
+      <div className="1.5lg:ml-0 ml-[170px] flex space-x-6">
         {
           tabs.map((item, i) => (
             <Tabs key={i} item={item} />
