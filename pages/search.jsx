@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import SearchPageHeader from "../components/searchPageHeader/searchPageHeader";
+import SearchResults from "../components/searchResults/searchResults";
 import response from "../response";
 
 function Search({ results }) {
@@ -12,7 +13,7 @@ function Search({ results }) {
         <title>{router.query.term} - Google Search</title>
       </Head>
       <SearchPageHeader />
-
+      <SearchResults results={results} />
     </div>
   );
 }

@@ -2,15 +2,13 @@ import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-function SearchInputSearchPage({ scroll }) {
-  const router = useRouter();
-  const searchTerm = router.query.term;
-
-  const [searchVal, setSearchVal] = useState(searchTerm);
+function SearchInputSearchPage({ searchVal, setSearchVal, scroll }) {
 
   const handleInput = (e) => {
     setSearchVal(e.target.value);
   };
+
+  const router = useRouter();
 
   const search = (e) => {
     if (searchVal && e.key == 'Enter') {

@@ -1,4 +1,5 @@
 import { UserIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 import { useRef, useState } from "react";
 
 function Avatar() {
@@ -11,6 +12,7 @@ function Avatar() {
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
     }
+
     reader.onload = (readerEvent) => {
       setImage(readerEvent.target.result);
     };

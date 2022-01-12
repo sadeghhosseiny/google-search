@@ -13,3 +13,17 @@
     @apply bg-gray-50 text-gray-600 px-4 py-2 ring-gray-300 hover:ring-1 border-gray-200 cursor-pointer rounded-sm;
   }
 }
+
+.pagination {
+  display: flex;
+}
+
+.pagination > li {
+  margin-left: 10px;
+}
+
+.pagination > .active {
+  color: red;
+  background: blue;
+  text-decoration: underline;
+}

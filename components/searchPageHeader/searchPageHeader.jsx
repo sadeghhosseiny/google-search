@@ -10,6 +10,11 @@ function SearchPageHeader() {
 
   const [valOfScroll, setValOfScroll] = useState(0);
 
+  const router = useRouter();
+  const searchTerm = router.query.term;
+
+  const [searchVal, setSearchVal] = useState(searchTerm);
+
   useEffect(() => {
     const listener = () => {
       setValOfScroll(window.scrollY);
@@ -21,6 +26,8 @@ function SearchPageHeader() {
     };
   }, []);
 
+
+
   return (
     <>
       <header className="flex flex-col mt-8 pb-4 border-b">
@@ -30,7 +37,7 @@ function SearchPageHeader() {
           <div className="flex flex-grow items-center w-full ml-6 1.5lg:ml-5 1.5xl:ml-[calc((100vw_-_1290px)_/_2_+_105px)]">
             <Image src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
               width={90} height={30} />
-            <SearchInputSearchPage scroll={false} />
+            <SearchInputSearchPage searchVal={searchVal} setSearchVal={setSearchVal} scroll={false} />
           </div>
           <div className="flex mr-5">
             <div className="icon">
@@ -47,7 +54,7 @@ function SearchPageHeader() {
         <div className="flex w-full items-center">
           <Image src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
             width={80} height={30} />
-          <SearchInputSearchPage scroll={true} />
+          <SearchInputSearchPage searchVal={searchVal} setSearchVal={setSearchVal} scroll={true} />
         </div>
         <div className="flex mr-5">
           <div className="icon">
