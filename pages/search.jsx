@@ -22,10 +22,12 @@ export async function getServerSideProps(context) {
 
   const API_KEY = process.env.API_KEY;
   const CONTEXT_KEY = process.env.CONTEXT_KEY;
+  const startIndex = context.query.start || 0;
 
   const useDummyData = true;
 
-  const data = useDummyData ? response : await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}`)
+  const data = useDummyData ? response : await fetch(`https://www.googleapis.com/customsearch/v1
+  ?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`)
     .then(res => res.json());
 
   return {

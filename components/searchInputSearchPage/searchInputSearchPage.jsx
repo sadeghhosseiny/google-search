@@ -12,7 +12,7 @@ function SearchInputSearchPage({ searchVal, setSearchVal, scroll }) {
 
   const search = (e) => {
     if (searchVal && e.key == 'Enter') {
-      router.push(`/search?term=${searchVal}`);
+      router.push(`/search?term=${searchVal}&start=${router.query.start || 0}`);
     }
   };
 

@@ -13,7 +13,7 @@ function SearchSection() {
 
   const search = (e) => {
     if (inputVal && e.key == 'Enter') {
-      router.push(`/search?term=${inputVal}`);
+      router.push(`/search?term=${inputVal}&start=${0}`);
     }
   };
 

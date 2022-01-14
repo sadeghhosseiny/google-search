@@ -16,14 +16,21 @@
 
 .pagination {
   display: flex;
+  width: 100%;
+  max-width: 600px;
+  justify-content: center;
 }
 
 .pagination > li {
   margin-left: 10px;
+  color: blue;
+  height: fit-content;
+}
+
+.pagination > li:hover {
+  text-decoration: underline;
 }
 
 .pagination > .active {
-  color: red;
-  background: blue;
-  text-decoration: underline;
+  color: black;
 }
