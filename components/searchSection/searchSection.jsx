@@ -1,4 +1,5 @@
 import { MicrophoneIcon, SearchIcon } from "@heroicons/react/outline";
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -7,12 +8,19 @@ function SearchSection() {
 
   const [inputVal, setInputVal] = useState(null);
   const router = useRouter();
-  const handleInput = (e) => {
+
+  const handleInput = async (e) => {
     setInputVal(e.target.value);
   };
 
   const search = (e) => {
     if (inputVal && e.key == 'Enter') {
+      router.push(`/search?term=${inputVal}&start=${0}`);
+    }
+  };
+
+  const searchWithClick = () => {
+    if (inputVal) {
       router.push(`/search?term=${inputVal}&start=${0}`);
     }
   };
@@ -24,7 +32,7 @@ function SearchSection() {
         width={300} height={100} objectFit="contain" />
       <div className="px-5 w-full max-w-2xl">
         <div className="flex items-center rounded-full focus-within:shadow-lg hover:shadow-lg my-7 px-4 border ">
-          <SearchIcon className="h-5 text-gray-400 cursor-pointer" />
+          <SearchIcon onClick={searchWithClick} className="h-5 text-gray-400 cursor-pointer" />
           <input onChange={handleInput} onKeyPress={search} className="outline-none flex-grow p-3 rounded-full w-full" type="text" />
           <MicrophoneIcon className="h-5 cursor-pointer" />
         </div>

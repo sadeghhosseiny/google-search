@@ -35,7 +35,8 @@ function SearchPageHeader() {
           {/* use underscore instead of space. you can use it without underscore like ml-[calc((100vw-1160px)/2+105px)] */}
           {/* NOTE: you can't use it with space */}
           <div className="flex flex-grow items-center w-full ml-6 1.5lg:ml-5 1.5xl:ml-[calc((100vw_-_1290px)_/_2_+_105px)]">
-            <Image src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+            <Image onClick={() => router.push('/')} className="cursor-pointer"
+              src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
               width={90} height={30} />
             <SearchInputSearchPage searchVal={searchVal} setSearchVal={setSearchVal} scroll={false} />
           </div>
@@ -52,7 +53,8 @@ function SearchPageHeader() {
       <div style={valOfScroll <= 185 ? { transform: `translateY(${-185 - (-valOfScroll)}px)` } : null} className={`
       flex bg-white fixed top-0 w-full items-center pl-7 py-2 h-14 shadow-lg justify-between`}>
         <div className="flex w-full items-center">
-          <Image src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+          <Image onClick={() => router.push('/')} className="cursor-pointer"
+            src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
             width={80} height={30} />
           <SearchInputSearchPage searchVal={searchVal} setSearchVal={setSearchVal} scroll={true} />
         </div>

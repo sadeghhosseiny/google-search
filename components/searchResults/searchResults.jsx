@@ -2,11 +2,11 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Pagination from "react-js-pagination";
+import { useEffect } from "react/cjs/react.development";
 import Footer from "../footer/footer";
 // require("bootstrap/less/bootstrap.less");
 
 function SearchResults({ results }) {
-  console.log('datas', results);
   const router = useRouter();
 
   const [activePage, setActivePage] = useState(1);
@@ -15,23 +15,26 @@ function SearchResults({ results }) {
     setActivePage(pagenumber);
     const index = pagenumber * 10 - 10;
     router.push(`/search?term=${router.query.term}&start=${index}`);
-    console.log(pagenumber);
   };
   const start = router.query.start;
+  const text = router.query.term;
 
   const { formattedTotalResults, formattedSearchTime, totalResults } = results.searchInformation;
 
+  useEffect(() => {
+    setActivePage(1);
+  }, [text]);
+
   return (
     <>
-      <div className="ml-40 1.5lg:ml-5 1.5xl:ml-[calc((100vw-720px)/2-180px)] my-7 space-y-5">
-        {/* {console.log('START ', start)} */}
+      <div className="flex-grow ml-40 1.5lg:ml-5 1.5xl:ml-[calc((100vw-720px)/2-180px)] my-7 space-y-5">
         {
           start >= 10 ?
             <p className="text-gray-500">Page {start / 10 + 1} of About {formattedTotalResults} results ({formattedSearchTime})</p> :
             <p className="text-gray-500">About {formattedTotalResults} results ({formattedSearchTime})</p>
         }
         {
-          results.items.map((res, i) => (
+          results?.items?.map((res, i) => (
             <div key={i}>
               <div className="group hover:cursor-pointer w-fit">
                 <a className="block w-fit" href={res.link}>
@@ -53,13 +56,13 @@ function SearchResults({ results }) {
               hideDisabled
               hideFirstLastPages
               prevPageText={<div>
-                <ChevronLeftIcon className="h-4" />
+                <ChevronLeftIcon className="h-4 ml-auto mt-[5px]" />
                 <span>
                   Previous
                 </span>
               </div>}
               nextPageText={<div>
-                <ChevronRightIcon className="h-4 " />
+                <ChevronRightIcon className="h-4 mt-[5px]" />
                 <span>
                   Next
                 </span>

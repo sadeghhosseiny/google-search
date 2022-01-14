@@ -12,7 +12,13 @@ function SearchInputSearchPage({ searchVal, setSearchVal, scroll }) {
 
   const search = (e) => {
     if (searchVal && e.key == 'Enter') {
-      router.push(`/search?term=${searchVal}&start=${router.query.start || 0}`);
+      router.push(`/search?term=${searchVal}&start=${0}`);
+    }
+  };
+
+  const searchWithClick = () => {
+    if (searchVal) {
+      router.push(`/search?term=${searchVal}&start=${0}`);
     }
   };
 
@@ -22,7 +28,7 @@ function SearchInputSearchPage({ searchVal, setSearchVal, scroll }) {
       <XIcon onClick={() => setSearchVal('')} className={`mr-4 ${scroll && 'h-4'} h-6 text-gray-500 border-r border-gray-300 pr-3 cursor-pointer`} />
       <div />
       <MicrophoneIcon className={`mr-4 text-blue-500 ${scroll ? 'h-4' : 'h-6'} cursor-pointer`} />
-      <SearchIcon className={`${scroll ? 'h-4' : 'h-6'} text-blue-500 cursor-pointer`} />
+      <SearchIcon onClick={searchWithClick} className={`${scroll ? 'h-4' : 'h-6'} text-blue-500 cursor-pointer`} />
     </div>
   );
 }

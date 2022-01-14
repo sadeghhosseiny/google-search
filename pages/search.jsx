@@ -8,7 +8,7 @@ function Search({ results }) {
   const router = useRouter();
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       <Head>
         <title>{router.query.term} - Google Search</title>
       </Head>
@@ -26,8 +26,7 @@ export async function getServerSideProps(context) {
 
   const useDummyData = true;
 
-  const data = useDummyData ? response : await fetch(`https://www.googleapis.com/customsearch/v1
-  ?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`)
+  const data = useDummyData ? response : await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}&lr=lang_en`)
     .then(res => res.json());
 
   return {
