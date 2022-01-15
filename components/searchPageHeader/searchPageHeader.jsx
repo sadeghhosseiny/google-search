@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Avatar from "../avatar/avatar";
 import HeaderTabs from "../headerTabs/headerTabs";
 import SearchInputSearchPage from "../searchInputSearchPage/searchInputSearchPage";
+import g_logo from '../../g2.png';
 
 function SearchPageHeader() {
 
@@ -38,6 +39,7 @@ function SearchPageHeader() {
             <Image onClick={() => router.push('/')} className="cursor-pointer"
               src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
               width={90} height={30} />
+            {/* <Image src={g_logo} width={40} height={40} /> */}
             <SearchInputSearchPage searchVal={searchVal} setSearchVal={setSearchVal} scroll={false} />
           </div>
           <div className="flex mr-5">
