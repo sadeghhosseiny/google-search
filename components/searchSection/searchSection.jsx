@@ -1,7 +1,7 @@
 import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 function SearchSection() {
 
@@ -11,7 +11,10 @@ function SearchSection() {
   });
   const [autoCompleteVals, setAutoCompleteVals] = useState();
   const [cursor, setCursor] = useState(0);
+  const [bool, setBool] = useState(false);
+
   const router = useRouter();
+
 
   const handleInput = async (e) => {
     setInputVal({
@@ -74,11 +77,11 @@ function SearchSection() {
 
 
   return (
-    <form type='submit' className="flex flex-col w-full items-center flex-grow px-5 mt-44">
+    <form type='submit' className="flex flex-col w-full items-center flex-grow px-5 mt-48">
       <Image src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-        width={300} height={100} objectFit="contain" />
-      <div className="mx-auto w-full bg-white max-w-2xl relative">
-        <div className={`flex items-center ${inputVal.dynamic ? 'rounded-t-3xl border-b-0' : 'rounded-full'} border focus-within:shadow-lg hover:shadow-lg mt-7 px-4`}>
+        width={272} height={92} objectFit="contain" />
+      <div className="mx-auto w-full bg-white max-w-[584px] relative group">
+        <div className={`flex relative items-center ${inputVal.dynamic ? 'rounded-3xl z-10 group-focus-within:z-0 group-focus-within:rounded-b-none group-focus-within:border-b-0' : 'rounded-full'} border focus-within:shadow-lg hover:shadow-lg mt-7 px-4`}>
           <SearchIcon onClick={searchWithClick} className="h-5 text-gray-400 cursor-pointer" />
           <input onChange={handleInput} onKeyDown={search} value={inputVal.dynamic} className="outline-none flex-grow p-3 rounded-full w-full" type="text" />
           {
@@ -90,17 +93,26 @@ function SearchSection() {
           }
           <MicrophoneIcon className="h-5 cursor-pointer" />
         </div>
-        <div className={`w-full rounded-b-3xl ${inputVal.dynamic ? 'shadow-lg bg-white border border-t-0' : 'bg-none'} absolute rounded-b-3xl max-w-2xl `}>
+        <div className={`w-full ${inputVal.dynamic ? 'group-focus-within:shadow-lg group-focus-within:border shadow-none group-focus-within:border-t-0 bg-white' : 'bg-none'}
+         absolute rounded-b-3xl max-w-2xl`}>
           {
             inputVal.dynamic &&
             <>
-              <div className="border-t mx-5" />
+              <div className="border-t mx-5 group-focus-within:block hidden" />
+              {console.log(autoCompleteVals)}
               {autoCompleteVals?.map((item, i) => (
-                <div key={i} onClick={() => searchAutocomplete(item)} className={`${cursor - 1 == i ? 'bg-gray-200' : 'bg-white'} flex items-center px-4 py-2 hover:bg-gray-200 cursor-default`}>
+                <div key={i} onClick={() => searchAutocomplete(item)} className={`${cursor - 1 == i ? 'bg-gray-200' : 'bg-white'} 
+                group-focus-within:flex hidden items-center px-4 py-2 hover:bg-gray-200 cursor-default`}>
                   <SearchIcon onClick={searchWithClick} className="h-5 py-[0.65px] pr-3 text-gray-400 cursor-pointer" />
                   <div className="flex whitespace-pre-wrap">
-                    <span>{item.substr(item.indexOf(inputVal.constant), inputVal.constant.length)}</span>
-                    <span className="font-bold">{item.substr(item.indexOf(inputVal.constant) + inputVal.constant.length)}</span>
+                    {
+                      item.indexOf(inputVal.constant) >= 0 ?
+                        <>
+                          <span>{item.substr(item.indexOf(inputVal.constant), inputVal.constant.length)}</span>
+                          <span className="font-bold">{item.substr(item.indexOf(inputVal.constant) + inputVal.constant.length)}</span>
+                        </> :
+                        <span className="font-bold">{item}</span>
+                    }
                   </div>
                 </div>
               ))}
