@@ -35,10 +35,12 @@ function SearchPageHeader() {
           {/* use underscore instead of space. you can use it without underscore like ml-[calc((100vw-1160px)/2+105px)] */}
           {/* NOTE: you can't use it with space */}
           <div className="flex flex-grow mobile:flex-col mobile:gap-y-5 items-center w-full ml-6 1.5lg:mx-2 1.5xl:ml-[calc((100vw_-_1290px)_/_2_+_105px)]">
-            <div className="mobile:flex mobile:w-full justify-between items-center">
-              <Image onClick={() => router.push('/')} className="cursor-pointer" objectPosition='center'
-                src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-                width={90} height={30} />
+            <div className="mobile:flex mobile:w-full justify-end items-end">
+              <div className="mobile:absolute left-[40%]">
+                <Image onClick={() => router.push('/')} className="cursor-pointer" objectPosition='center'
+                  src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+                  width={90} height={30} />
+              </div>
               <div className="mobile:block hidden">
                 <Avatar />
               </div>
@@ -56,7 +58,7 @@ function SearchPageHeader() {
       </header>
 
       <div style={valOfScroll <= 185 ? { transform: `translateY(${-185 - (-valOfScroll)}px)` } : null} className={`
-      flex bg-white fixed top-0 w-full items-center pl-7 py-2 h-14 shadow-lg justify-between`}>
+      flex bg-white fixed top-0 w-full items-center pl-7 py-2 h-14 shadow-lg mobile:hidden justify-between`}>
         <div className="flex w-full items-center">
           <Image onClick={() => router.push('/')} className="cursor-pointer"
             src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"

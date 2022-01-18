@@ -99,7 +99,6 @@ function SearchSection() {
             inputVal.dynamic &&
             <>
               <div className="border-t mx-5 group-focus-within:block hidden" />
-              {console.log(autoCompleteVals)}
               {autoCompleteVals?.map((item, i) => (
                 <div key={i} onClick={() => searchAutocomplete(item)} className={`${cursor - 1 == i ? 'bg-gray-200' : 'bg-white'} 
                 group-focus-within:flex hidden items-center px-4 py-2 hover:bg-gray-200 cursor-default`}>
