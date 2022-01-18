@@ -10,6 +10,7 @@ function SearchResults({ results }) {
   const router = useRouter();
 
   const [activePage, setActivePage] = useState(1);
+  console.log(results);
 
   const handlePageChange = (pagenumber) => {
     setActivePage(pagenumber);
@@ -35,18 +36,16 @@ function SearchResults({ results }) {
         }
         {
           results?.items?.map((res, i) => (
-            <div key={i}>
-              <div className="group hover:cursor-pointer w-fit">
-                <a className="block w-fit" href={res.link}>
-                  {res.formattedUrl}
-                </a>
+            <div key={i} className="max-w-2xl w-full">
+              <div className="group hover:cursor-pointer max-w-2xl">
+                <p className="max-w-[489px] whitespace-nowrap text-ellipsis overflow-hidden">{`${res.formattedUrl}`}</p>
                 <a href={res.link}>
                   <h2 className="text-blue-700 font-medium text-xl inline-block group-hover:underline">
                     {res.title}
                   </h2>
                 </a>
               </div>
-              <p className="max-w-xl">{res.snippet}</p>
+              <p className="max-w-lg">{res.snippet}</p>
             </div>
           ))
         }

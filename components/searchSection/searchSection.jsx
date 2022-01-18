@@ -112,6 +112,7 @@ function SearchSection() {
                           <span className="font-bold">{item.substr(item.indexOf(inputVal.constant) + inputVal.constant.length)}</span>
                         </> :
                         <span className="font-bold">{item}</span>
+
                     }
                   </div>
                 </div>

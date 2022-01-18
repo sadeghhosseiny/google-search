@@ -1,7 +1,7 @@
-import { MicrophoneIcon, SearchIcon, ViewGridIcon, XIcon } from "@heroicons/react/outline";
+import { ViewGridIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Avatar from "../avatar/avatar";
 import HeaderTabs from "../headerTabs/headerTabs";
 import SearchInputSearchPage from "../searchInputSearchPage/searchInputSearchPage";
@@ -34,13 +34,18 @@ function SearchPageHeader() {
         <div className="flex flex-grow w-full items-center justify-between">
           {/* use underscore instead of space. you can use it without underscore like ml-[calc((100vw-1160px)/2+105px)] */}
           {/* NOTE: you can't use it with space */}
-          <div className="flex flex-grow items-center w-full ml-6 1.5lg:ml-5 1.5xl:ml-[calc((100vw_-_1290px)_/_2_+_105px)]">
-            <Image onClick={() => router.push('/')} className="cursor-pointer"
-              src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-              width={90} height={30} />
+          <div className="flex flex-grow mobile:flex-col mobile:gap-y-5 items-center w-full ml-6 1.5lg:mx-2 1.5xl:ml-[calc((100vw_-_1290px)_/_2_+_105px)]">
+            <div className="mobile:flex mobile:w-full justify-between items-center">
+              <Image onClick={() => router.push('/')} className="cursor-pointer" objectPosition='center'
+                src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+                width={90} height={30} />
+              <div className="mobile:block hidden">
+                <Avatar />
+              </div>
+            </div>
             <SearchInputSearchPage searchVal={searchVal} setSearchVal={setSearchVal} scroll={false} />
           </div>
-          <div className="flex mr-5">
+          <div className="flex mr-5 mobile:hidden">
             <div className="icon">
               <ViewGridIcon className='h-6' />
             </div>
