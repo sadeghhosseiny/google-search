@@ -30,7 +30,7 @@ function HeaderTabs() {
   ];
 
   return (
-    <div className="flex flex-grow mt-6 space-x-6 text-gray-400 max-w-[820px] mobile:pb-4 mobile:overflow-x-auto 1.5lg:max-w-[645px] justify-between 1.5lg:ml-5 
+    <div className="flex flex-grow mt-6 pr-3 space-x-6 text-gray-400 max-w-[820px] mobile:pb-4 mobile:overflow-x-auto 1.5lg:max-w-[645px] justify-between 1.5lg:ml-5 
     1.5xl:ml-[calc((100vw-1065px)/2-180px)]">
       <div className="1.5lg:ml-0 ml-[170px] flex space-x-6">
         {

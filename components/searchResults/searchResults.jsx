@@ -1,8 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "react-js-pagination";
-import { useEffect } from "react/cjs/react.development";
 import Footer from "../footer/footer";
 // require("bootstrap/less/bootstrap.less");
 

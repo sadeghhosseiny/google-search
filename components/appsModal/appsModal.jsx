@@ -8,7 +8,7 @@ import gMeet from '../../public/apps icons/gMeet.png';
 import gPhoto from '../../public/apps icons/gPhoto.png';
 import App from '../app/app';
 
-function AppsModal({ setIsClickedOnGridBtn }) {
+function AppsModal() {
   const apps = [
     {
       icon: g,
@@ -45,7 +45,7 @@ function AppsModal({ setIsClickedOnGridBtn }) {
   ];
 
   return (
-    <div onClick={(e) => { e.stopPropagation(); setIsClickedOnGridBtn(true); }} className='absolute w-[300px] space-x-2 space-y-2 py-2 z-40 top-16 right-4 shadow-[0_4px_8px_-2px_rgba(-34,-21,-13,1.3)] rounded-lg bg-white'>
+    <div className={`fixed w-[300px] space-x-2 space-y-2 py-2 z-40 top-20 right-4 shadow-[0_4px_8px_-2px_rgba(-34,-21,-13,1.3)] rounded-lg bg-white`}>
       {apps.map((item, i) => (
         <App item={item} key={i} />
       ))}
