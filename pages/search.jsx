@@ -19,19 +19,19 @@ function Search({ results }) {
 }
 
 export async function getServerSideProps(context) {
+  const API_KEY = process.env.GOOGLE_API_KEY;
+  const CONTEXT_KEY = process.env.GOOGLE_CONTEXT_KEY;
 
-  const API_KEY = process.env.API_KEY;
-  const CONTEXT_KEY = process.env.CONTEXT_KEY;
   const startIndex = context.query.start || 0;
 
-  const useDummyData = true;
+  const useDummyData = false;
 
   const data = useDummyData ? response : await fetch(`https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}&lr=lang_en`)
     .then(res => res.json());
 
   return {
     props: {
-      results: data
+      results: data,
     }
   };
 }

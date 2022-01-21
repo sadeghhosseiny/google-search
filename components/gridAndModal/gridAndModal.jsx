@@ -3,14 +3,13 @@ import AppsModal from "../appsModal/appsModal";
 
 function GridAndModal({ setHandleShowModalForHeader, handleShowModalForHeader }) {
 
-
   return (
     <div className="group">
       <button onClick={() => setHandleShowModalForHeader(!handleShowModalForHeader)} className="icon">
         <ViewGridIcon className='h-6' />
       </button>
       {
-        (handleShowModalForHeader) &&
+        handleShowModalForHeader &&
         <div>
           <AppsModal />
         </div>

@@ -9,7 +9,6 @@ function SearchResults({ results }) {
   const router = useRouter();
 
   const [activePage, setActivePage] = useState(1);
-  console.log(results);
 
   const handlePageChange = (pagenumber) => {
     setActivePage(pagenumber);
