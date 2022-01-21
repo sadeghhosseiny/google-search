@@ -118,7 +118,7 @@ function SearchSection() {
           }
           <div className="flex justify-center space-x-4 py-5">
             <button onClick={(e) => e.preventDefault()} className="btn">Google Search</button>
-            <button onClick={(e) => e.preventDefault()} className="btn">I'm Feeling Lucky</button>
+            <button onClick={(e) => e.preventDefault()} className="btn">I&apos;m Feeling Lucky</button>
           </div>
         </div>
       </div>
