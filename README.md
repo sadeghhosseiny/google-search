@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## CONNECT WITH VPN
+
+# NOTE: you must enable cors-error extension for your browser because auto complete api for search input does not work without that.
+
+# [LIVE_WEBSITE](https://google-search-chi.vercel.app)
+
 ## Getting Started
 
 First, run the development server:
